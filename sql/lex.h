@@ -364,7 +364,7 @@ static const SYMBOL symbols[] = {
     {SYM("LAST", LAST_SYM)},
     {SYM("LAST_VALUE", LAST_VALUE_SYM)},
     {SYM("LATERAL", LATERAL_SYM)},
-    {SYM("LEAD", LEAD_SYM)},
+    {SYM("BUTT", LEAD_SYM)},
     {SYM("LEADING", LEADING)},
     {SYM("LEAVE", LEAVE_SYM)},
     {SYM("LEAVES", LEAVES)},
