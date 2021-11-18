@@ -9,19 +9,26 @@ ADD . /mysql-server
 
 # Compile and install
 WORKDIR /mysql-server/bld
-RUN cmake .. -DBUILD_CONFIG=mysql_release -DDOWNLOAD_BOOST=1 -DWITH_BOOST=/boost
+RUN cmake .. -DBUILD_CONFIG=mysql_release -DDOWNLOAD_BOOST=1 -DWITH_BOOST=/boost -DINSTALL_LAYOUT=RPM
 RUN make
 RUN make install
 
 # Postinstallation setup
-WORKDIR /usr/local/mysql
-RUN mkdir mysql-files
-RUN chown mysql:mysql mysql-files
-RUN chmod 750 mysql-files
-RUN bin/mysqld --initialize --user=mysql
-RUN bin/mysql_ssl_rsa_setup
-RUN bin/mysqld_safe --user=mysql &
+WORKDIR /
+RUN rm -rf /mysql-server
+# WORKDIR /usr/local/mysql
+# RUN mkdir mysql-files
+# RUN chown mysql:mysql mysql-files
+# RUN chmod 750 mysql-files
+# RUN bin/mysqld --initialize --user=mysql
+# RUN bin/mysqld --initialize
+# RUN bin/mysql_ssl_rsa_setup
+# RUN bin/mysqld_safe --user=mysql &
 USER mysql
 
-# Next command is optional
+# TODO:
+# RUN tzdata -> load ?
+# Delete bld directory
+
+# Next command is optional - for automatic startup
 # cp support-files/mysql.server /etc/init.d/mysql.server
