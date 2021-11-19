@@ -15,6 +15,7 @@ RUN make
 
 ## (2) Install
 FROM debian:buster AS install
+RUN apt-get update
 RUN apt-get install -y bison build-essential cmake cmake-gui libncurses-dev libudev-dev libssl-dev pkg-config
 COPY --from=build /bld /bld
 WORKDIR /bld
