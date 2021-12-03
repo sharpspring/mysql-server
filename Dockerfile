@@ -14,4 +14,4 @@ COPY --from=build /usr/local/mysql /usr/local/mysql
 RUN ln -s /usr/local/mysql/bin/* /usr/bin/
 RUN groupadd mysql
 RUN useradd -r -g mysql -s /bin/false mysql
-USER mysql
+#USER mysql
