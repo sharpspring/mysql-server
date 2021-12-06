@@ -20,8 +20,8 @@ COPY --from=build /usr/include/mysql /usr/include/mysql
 COPY --from=build /usr/lib/mysql /usr/lib/mysql
 COPY --from=build /usr/share/mysql /usr/share/mysql
 COPY --from=build /usr/share/mysql-8.0 /usr/share/mysql-8.0
-COPY --from=build /usr/bin/mysql* /usr/bin/
-COPY --from=build /usr/sbin/mysql* /usr/sbin/
+COPY --from=build /usr/bin/my* /usr/bin/
+COPY --from=build /usr/sbin/my* /usr/sbin/
 # RUN ln -s /usr/local/mysql/bin/* /usr/bin/
 # RUN groupadd mysql
 # RUN useradd -r -g mysql -s /bin/false mysql
