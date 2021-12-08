@@ -5,7 +5,8 @@ node('k8s') {
     }
 
     stage("Build image") {
-        sh("docker build . -t us.gcr.io/sharpspring-us/mysql:unleaded")
+        sh("docker pull us.gcr.io/sharpspring-us/mysql:unleaded")
+        sh("docker build . -t us.gcr.io/sharpspring-us/mysql:unleaded --cache-from us.gcr.io/sharpspring-us/mysql:unleaded")
     }
 
     stage('Push image to registry') {
